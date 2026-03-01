@@ -11,12 +11,20 @@ type Review = {
   date: string;
 };
 
+type AnalyticsStats = {
+  day: number;
+  week: number;
+  month: number;
+  table: { id: string; country: string; timeMsk: string; referrer: string }[];
+};
+
 export default function AdminReviews() {
   const [authStatus, setAuthStatus] = useState<"checking" | "unauthenticated" | "authenticated">("checking");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
+  const [analytics, setAnalytics] = useState<AnalyticsStats | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [form, setForm] = useState({
@@ -40,13 +48,24 @@ export default function AdminReviews() {
     }
   };
 
+  const loadAnalytics = async () => {
+    try {
+      const res = await fetch("/api/analytics/stats");
+      if (res.ok) {
+        const data = await res.json();
+        setAnalytics(data);
+      }
+    } catch {
+      setAnalytics(null);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       try {
         const res = await fetch("/api/admin/auth");
         const data = await res.json();
         setAuthStatus(data.ok ? "authenticated" : "unauthenticated");
-        if (data.ok) loadReviews();
       } catch {
         setAuthStatus("unauthenticated");
       }
@@ -54,7 +73,10 @@ export default function AdminReviews() {
   }, []);
 
   useEffect(() => {
-    if (authStatus === "authenticated") loadReviews();
+    if (authStatus === "authenticated") {
+      loadReviews();
+      loadAnalytics();
+    }
   }, [authStatus]);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -187,7 +209,7 @@ export default function AdminReviews() {
     <div className="min-h-screen bg-background p-6">
       <div className="MaxContainerWidth MaxContainerPadding mx-auto max-w-3xl">
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-[28px] font-medium">Админ-панель: Отзывы</h1>
+          <h1 className="text-[28px] font-medium">Админ-панель</h1>
           <div className="flex items-center gap-4">
             <button
               type="button"
@@ -203,6 +225,61 @@ export default function AdminReviews() {
               ← На главную
             </Link>
           </div>
+        </div>
+
+        {/* Статистика посещений */}
+        <div className="mb-10 rounded-[22px] border border-(--border-color) bg-white p-6">
+          <h2 className="mb-4 text-[20px] font-medium">Статистика посещений</h2>
+          {analytics ? (
+            <>
+              <div className="mb-6 grid grid-cols-3 gap-4">
+                <div className="rounded-xl border border-(--border-color) bg-(--gray-color)/30 p-4 text-center">
+                  <p className="text-[32px] font-semibold text-(--primary-color)">{analytics.day}</p>
+                  <p className="text-[14px] text-(#6C6C6C)">За день</p>
+                </div>
+                <div className="rounded-xl border border-(--border-color) bg-(--gray-color)/30 p-4 text-center">
+                  <p className="text-[32px] font-semibold text-(--primary-color)">{analytics.week}</p>
+                  <p className="text-[14px] text-(#6C6C6C)">За неделю</p>
+                </div>
+                <div className="rounded-xl border border-(--border-color) bg-(--gray-color)/30 p-4 text-center">
+                  <p className="text-[32px] font-semibold text-(--primary-color)">{analytics.month}</p>
+                  <p className="text-[14px] text-(#6C6C6C)">За месяц</p>
+                </div>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[500px] text-left text-[14px]">
+                  <thead>
+                    <tr className="border-b border-(--border-color)">
+                      <th className="pb-3 pr-4 font-medium text-(#6C6C6C)">Страна</th>
+                      <th className="pb-3 pr-4 font-medium text-(#6C6C6C)">Время (МСК)</th>
+                      <th className="pb-3 font-medium text-(#6C6C6C)">Откуда зашёл</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {analytics.table.length === 0 ? (
+                      <tr>
+                        <td colSpan={3} className="py-4 text-(#6C6C6C)">
+                          Пока нет данных
+                        </td>
+                      </tr>
+                    ) : (
+                      analytics.table.map((row) => (
+                        <tr key={row.id} className="border-b border-(--border-color)/50">
+                          <td className="py-3 pr-4">{row.country}</td>
+                          <td className="py-3 pr-4">{row.timeMsk}</td>
+                          <td className="py-3 max-w-[200px] truncate" title={row.referrer}>
+                            {row.referrer}
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          ) : (
+            <p className="text-(#6C6C6C)">Загрузка статистики…</p>
+          )}
         </div>
 
         <form

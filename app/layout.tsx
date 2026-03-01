@@ -6,6 +6,7 @@ import { parseLocale } from "@/i18n/config";
 import { DictionaryProvider } from "@/i18n/DictionaryProvider";
 import type { Locale } from "@/i18n/config";
 import CustomCursor from "@/ui/CustomCursor";
+import AnalyticsTracker from "@/ui/AnalyticsTracker";
 import "./globals.css";
 
 const redHatText = Red_Hat_Text({
@@ -125,6 +126,7 @@ export default async function RootLayout({
         className={`${redHatText.variable} ${inter.variable} ${redHatText.className} antialiased`}
       >
         <CustomCursor />
+        <AnalyticsTracker />
         <DictionaryProvider dictionary={dictionary}>
           {children}
         </DictionaryProvider>
