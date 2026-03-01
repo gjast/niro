@@ -38,9 +38,9 @@ export async function POST(request: NextRequest) {
       referrer: referrer || "Прямой заход",
       userAgent,
     });
-
-    return new NextResponse(null, { status: 204 });
-  } catch {
-    return new NextResponse(null, { status: 500 });
+  } catch (err) {
+    // На сервере может не быть записи в data/ или ip-api недоступен — не отдаём 500 клиенту
+    console.error("[analytics/track]", err);
   }
+  return new NextResponse(null, { status: 204 });
 }

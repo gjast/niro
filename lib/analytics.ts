@@ -29,14 +29,19 @@ export function getVisits(): Visit[] {
   }
 }
 
-export function addVisit(visit: Omit<Visit, "id">): Visit {
-  ensureDataDir();
-  const visits = getVisits();
-  const id = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-  const newVisit: Visit = { ...visit, id };
-  visits.push(newVisit);
-  writeFileSync(DATA_PATH, JSON.stringify(visits, null, 2), "utf-8");
-  return newVisit;
+export function addVisit(visit: Omit<Visit, "id">): Visit | null {
+  try {
+    ensureDataDir();
+    const visits = getVisits();
+    const id = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+    const newVisit: Visit = { ...visit, id };
+    visits.push(newVisit);
+    writeFileSync(DATA_PATH, JSON.stringify(visits, null, 2), "utf-8");
+    return newVisit;
+  } catch (err) {
+    console.error("[analytics] addVisit write failed:", err);
+    return null;
+  }
 }
 
 export function formatMsk(timestamp: string): string {
