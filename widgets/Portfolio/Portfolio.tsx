@@ -108,10 +108,10 @@ export default function Portfolio() {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <h2 className="text-[18px] sm:text-[20px] md:text-[24px] text-center font-semibold leading-[120%] md:leading-[100%] tracking-0">
+                <h2 className="text-[18px] sm:text-[20px] md:text-[24px] text-center font-semibold leading-[120%] text-balance md:leading-[100%] tracking-0">
                   {currentText.title}
                 </h2>
-                <p className="text-[13px] sm:text-[14px] md:text-[16px] font-regular leading-[140%] md:leading-[100%] tracking-[-2%] text-[#6C6C6C] text-center mt-[10px] md:mt-[15px] mb-[20px] md:mb-[30px] max-w-[500px] mx-auto">
+                <p className="text-[13px] sm:text-[14px] md:text-[16px] font-regular leading-[140%] text-balance md:leading-[100%] tracking-[-2%] text-[#6C6C6C] text-center mt-[10px] md:mt-[15px] mb-[20px] md:mb-[30px] max-w-[500px] mx-auto">
                   {currentText.description}
                 </p>
 

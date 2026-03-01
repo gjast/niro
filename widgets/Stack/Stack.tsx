@@ -86,11 +86,11 @@ export default function Stack() {
 
   return (
     <div ref={containerRef} className="MaxContainerWidth MaxContainerPadding flex flex-col border-l border-r border-(--border-color) mx-auto gap-[30px] md:gap-[50px]">
-      <div data-stack="header" className="flex flex-col gap-[10px] md:gap-[15px]">
+      <div data-stack="header" className="flex flex-col ">
         <Label>
           <p className="mx-[18px] my-[9px]">{dict.stack.label}</p>
         </Label>
-        <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-semibold leading-[120%] tracking-[-2%]">
+        <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-semibold mt-[20px] sm:mt-[30px] mb-[10px] sm:mb-[15px] leading-[120%] tracking-[-2%]">
           {dict.stack.title}
         </h2>
         <p className="text-[#6C6C6C] text-[14px] sm:text-[16px] md:text-[18px] font-regular leading-[140%] md:leading-[100%] tracking-0">

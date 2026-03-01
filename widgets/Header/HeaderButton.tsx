@@ -9,7 +9,7 @@ export function HeaderButton() {
 
 	return (
 		<Button>
-			<Link href='#' className='text-white text-[14px] font-medium leading-[100%] tracking-[0.2px] px-[20px] py-[14px]'>{dict.header.getStarted}</Link>
+			<Link href='https://t.me/niro_webdev' className='text-white text-[14px] font-medium leading-[100%] tracking-[0.2px] px-[20px] py-[14px]'>{dict.header.getStarted}</Link>
 		</Button>
 	)
 }

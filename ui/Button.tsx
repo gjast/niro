@@ -1,12 +1,18 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 
 const MAGNET_STRENGTH = 8;
 const HOVER_COLOR = "rgb(42, 111, 214)"; // чуть темнее primary #3982EE
 
-export default function Button({ children }: { children: React.ReactNode }) {
+interface ButtonProps {
+  children: React.ReactNode;
+  href?: string;
+}
+
+export default function Button({ children, href }: ButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [magnet, setMagnet] = useState({ x: 0, y: 0 });
   const [hover, setHover] = useState(false);
@@ -31,7 +37,7 @@ export default function Button({ children }: { children: React.ReactNode }) {
     setHover(false);
   }
 
-  return (
+  const content = (
     <motion.div
       ref={ref}
       className="flex items-center justify-center rounded-full text-white text-[14px] font-medium leading-[100%] w-max cursor-pointer"
@@ -52,4 +58,9 @@ export default function Button({ children }: { children: React.ReactNode }) {
       {children}
     </motion.div>
   );
+
+  if (href) {
+    return <Link href={href} className="inline-block">{content}</Link>;
+  }
+  return content;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const socialLinks = [
-  { label: "Telegram", href: "#" },
+  { label: "Telegram", href: "https://t.me/niro_webdev" },
   { label: "Instagram", href: "#" },
   { label: "Facebook", href: "#" },
   { label: "LinkedIn", href: "#" },

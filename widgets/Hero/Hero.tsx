@@ -17,37 +17,43 @@ export default function Hero() {
   const rightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target as HTMLElement;
-          const key = el.getAttribute("data-hero");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const key = el.getAttribute("data-hero");
 
-          if (key === "img") {
-            gsap.to(el, { opacity: 1, y: 0, ...ANIMATION.header.to });
-          } else if (key === "left") {
-            const items = el.querySelectorAll<HTMLElement>(".hero-left-item");
-            const tl = gsap.timeline({ ease: ANIMATION.header.to.ease });
-            tl.to(el, { opacity: 1, x: 0, duration: ANIMATION.header.to.duration }).to(
-              items,
-              { opacity: 1, y: 0, duration: ANIMATION.stagger.duration, stagger: ANIMATION.stagger.stagger },
-              "-=0.25"
-            );
-          } else if (key === "right") {
-            gsap.to(el, {
+        if (key === "img") {
+          gsap.to(el, { opacity: 1, y: 0, ...ANIMATION.header.to });
+        } else if (key === "left") {
+          const items = el.querySelectorAll<HTMLElement>(".hero-left-item");
+          const tl = gsap.timeline({ ease: ANIMATION.header.to.ease });
+          tl.to(el, {
+            opacity: 1,
+            x: 0,
+            duration: ANIMATION.header.to.duration,
+          }).to(
+            items,
+            {
               opacity: 1,
-              x: 0,
-              duration: ANIMATION.secondary.to.duration,
-              delay: ANIMATION.secondary.to.delay,
-              ease: ANIMATION.secondary.to.ease,
-            });
-          }
-          observer.unobserve(el);
-        });
-      },
-      ANIMATION.observer
-    );
+              y: 0,
+              duration: ANIMATION.stagger.duration,
+              stagger: ANIMATION.stagger.stagger,
+            },
+            "-=0.25",
+          );
+        } else if (key === "right") {
+          gsap.to(el, {
+            opacity: 1,
+            x: 0,
+            duration: ANIMATION.secondary.to.duration,
+            delay: ANIMATION.secondary.to.delay,
+            ease: ANIMATION.secondary.to.ease,
+          });
+        }
+        observer.unobserve(el);
+      });
+    }, ANIMATION.observer);
 
     const refs = [imgRef, leftRef, rightRef];
     refs.forEach((ref) => ref.current && observer.observe(ref.current));
@@ -71,7 +77,11 @@ export default function Hero() {
       </div>
 
       <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-[30px] md:gap-[101px]">
-        <div ref={leftRef} data-hero="left" className="md:flex-2 hero-reveal-left">
+        <div
+          ref={leftRef}
+          data-hero="left"
+          className="md:flex-2 hero-reveal-left"
+        >
           <div className="hero-left-item">
             <Label>
               <p className="ml-[18px]">Fullstack developer</p>
@@ -88,7 +98,7 @@ export default function Hero() {
           </h1>
 
           <div className="hero-left-item">
-            <Button>
+            <Button href="https://t.me/niro_webdev">
               <p className="text-[14px] md:text-[16px] font-medium leading-[100%] tracking-0 px-[20px] py-[14px] md:px-[24px] md:py-[16px]">
                 {dict.hero.cta}
               </p>
@@ -96,8 +106,19 @@ export default function Hero() {
           </div>
         </div>
 
-        <div ref={rightRef} data-hero="right" className="flex md:flex-1 flex-col items-start md:items-end justify-center gap-[12px] md:gap-[20px] hero-reveal-right">
-          <Image src={arrowLine} alt="hero-2" width={38} height={31} priority className="hidden md:block" />
+        <div
+          ref={rightRef}
+          data-hero="right"
+          className="flex md:flex-1 flex-col items-start md:items-end justify-center gap-[12px] md:gap-[20px] hero-reveal-right"
+        >
+          <Image
+            src={arrowLine}
+            alt="hero-2"
+            width={38}
+            height={31}
+            priority
+            className="hidden md:block"
+          />
           <p className="text-[#6C6C6C] text-[15px] md:text-[18px] font-regular leading-[24px] md:leading-[28px] tracking-0 text-left md:text-right text-balance">
             {dict.hero.description}
           </p>
