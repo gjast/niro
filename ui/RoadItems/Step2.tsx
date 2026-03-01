@@ -5,8 +5,10 @@ import Road from "../Road";
 import Image from "next/image";
 import gsap from "gsap";
 import { ANIMATION } from "@/lib/animationConfig";
+import { useDictionary } from "@/i18n/DictionaryProvider";
 
 export default function Step2({ width }: { width?: number }) {
+  const dict = useDictionary();
   const gridWrapRef = useRef<HTMLDivElement>(null);
   const holdWrapRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
@@ -46,7 +48,7 @@ export default function Step2({ width }: { width?: number }) {
 
   return (
     <div className="h-full" style={width != null ? { width: `${width}px`, minWidth: `${width}px` } : undefined}>
-      <Road number={2} title="Предоплата / гарант / холд" description="Выбираем удобный и безопасный формат сотрудничества.">
+      <Road number={2} title={dict.roadmap.steps[1].title} description={dict.roadmap.steps[1].description}>
         <div ref={gridWrapRef} className="absolute top-0 left-0 w-full h-full">
           <Image src="/imgs/RoadMap/NetWork.png" alt="grid" fill className="pt-[30px] px-[30px]" />
         </div>

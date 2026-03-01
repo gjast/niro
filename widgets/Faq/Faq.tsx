@@ -4,31 +4,10 @@ import React, { useRef, useEffect } from "react";
 import FaqItem from "@/ui/FaqItem";
 import gsap from "gsap";
 import { ANIMATION } from "@/lib/animationConfig";
-
-const faqData = [
-  {
-    question: "Сколько времени занимает разработка проекта?",
-    answer:
-      "Срок зависит от сложности и объёма задач. В среднем лендинг или небольшой сайт занимает 2–4 недели, более сложные продукты — от 1 до 3 месяцев.",
-  },
-  {
-    question: "Как строится процесс работы?",
-    answer:
-      "Мы начинаем с созвона и брифа, затем согласуем структуру и дизайн, после чего переходим к разработке, тестированию и запуску. На каждом этапе вы видите прогресс и можете вносить правки.",
-  },
-  {
-    question: "Помогаете ли вы с поддержкой после запуска?",
-    answer:
-      "Да, я могу взять проект на техническую поддержку: фиксить баги, вносить небольшие правки и развивать функциональность по мере необходимости.",
-  },
-  {
-    question: "Можно ли начать с небольшого пилотного проекта?",
-    answer:
-      "Да, мы можем начать с маленькой задачи или MVP, чтобы вы оценили подход к работе, качество и скорость, а затем масштабировать решение.",
-  },
-];
+import { useDictionary } from "@/i18n/DictionaryProvider";
 
 export default function Faq() {
+  const dict = useDictionary();
   const sectionRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
@@ -81,15 +60,15 @@ export default function Faq() {
     >
       <div data-faq="header" className="items-center flex flex-col">
         <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-medium leading-[120%] tracking-[-2%] text-center max-w-[800px]">
-          Часто задаваемые вопросы
+          {dict.faq.title}
         </h2>
         <p className="text-[#6C6C6C] text-[14px] sm:text-[16px] md:text-[18px] font-regular leading-[140%] md:leading-[100%] tracking-0 text-center mt-[10px] md:mt-[15px]">
-          Ответы на популярные вопросы о работе и формате сотрудничества.
+          {dict.faq.subtitle}
         </p>
       </div>
 
       <div className="flex flex-col gap-[10px] md:gap-[15px] max-w-[800px] w-full mx-auto">
-        {faqData.map((item, index) => (
+        {dict.faq.items.map((item, index) => (
           <div key={index} data-faq="item">
             <FaqItem question={item.question} answer={item.answer} />
           </div>

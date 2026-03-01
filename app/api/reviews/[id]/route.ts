@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { writeFileSync, readFileSync } from "fs";
 import { join } from "path";
+import { verifySessionToken, getSessionCookieName } from "@/lib/admin-auth";
 
 const DATA_PATH = join(process.cwd(), "data", "reviews.json");
 
@@ -9,6 +11,12 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get(getSessionCookieName())?.value;
+    if (!verifySessionToken(token)) {
+      return NextResponse.json({ error: "Требуется авторизация" }, { status: 401 });
+    }
+
     const { id } = await params;
     const raw = readFileSync(DATA_PATH, "utf-8");
     const reviews = Array.isArray(JSON.parse(raw)) ? JSON.parse(raw) : [];

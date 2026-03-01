@@ -2,6 +2,7 @@
 
 import Button from "@/ui/Button";
 import React, { useRef, useEffect } from "react";
+import { useDictionary } from "@/i18n/DictionaryProvider";
 import Step1 from "@/ui/RoadItems/Step1";
 import Step2 from "@/ui/RoadItems/Step2";
 import Step3 from "@/ui/RoadItems/Step3";
@@ -10,6 +11,7 @@ import Step5 from "@/ui/RoadItems/Step5";
 import gsap from "gsap";
 
 export default function Roadmap() {
+  const dict = useDictionary();
   const sectionRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
@@ -53,13 +55,13 @@ export default function Roadmap() {
     >
       <div data-roadmap="header" className="flex flex-col items-center">
         <Button>
-          <p className="text-[16px] font-medium leading-[100%] tracking-[-2%] px-[18px] py-[9px]">Roadmap</p>
+          <p className="text-[16px] font-medium leading-[100%] tracking-[-2%] px-[18px] py-[9px]">{dict.roadmap.button}</p>
         </Button>
         <h3 className="text-[24px] sm:text-[36px] text-center font-medium leading-[120%] tracking-[-2%] mt-[30px]">
-          Как происходит заказ?
+          {dict.roadmap.title}
         </h3>
         <p className="text-[14px] sm:text-[18px] text-center font-regular text-[#6C6C6C] leading-[100%] tracking-0 mt-[15px]">
-          Пошаговый процесс разработки - от заявки до готового результата.
+          {dict.roadmap.subtitle}
         </p>
       </div>
 

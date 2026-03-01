@@ -6,10 +6,10 @@ import Logo from "@/ui/Logo";
 import Link from "next/link";
 import { useDictionary } from "@/i18n/DictionaryProvider";
 
-type LinkKey = "hero" | "portfolio" | "roadmap" | "reviews" | "faq";
+type LinkKey = "main" | "portfolio" | "roadmap" | "reviews" | "faq";
 
 const links: { href: string; key: LinkKey }[] = [
-  { href: "#Hero", key: "hero" },
+  { href: "#Hero", key: "main" },
   { href: "#Portfolio", key: "portfolio" },
   { href: "#Roadmap", key: "roadmap" },
   { href: "#Reviews", key: "reviews" },

@@ -7,48 +7,27 @@ import PortfolioCarousel from "@/ui/PortfolioCarousel";
 import Button from "@/ui/Button";
 import gsap from "gsap";
 import { ANIMATION } from "@/lib/animationConfig";
+import { useDictionary } from "@/i18n/DictionaryProvider";
 
 const portfolioItems = [
-  {
-    image: "/imgs/portfolio1.png",
-    title: "An online store for creating MRZ, barcodes, and much more",
-    description:
-      "A fully-fledged full-stack website with a payment system, authorisation, admin panel, generators",
-    tags: ["React", "NextJS", "Tailwind", "PostgreSQL"],
-  },
-  {
-    image: "/imgs/portfolio1.png",
-    title: "Corporate dashboard for real-time analytics",
-    description:
-      "Interactive dashboard with charts, filters and role-based access control",
-    tags: ["React", "TypeScript", "Zustand", "NestJS"],
-  },
-  {
-    image: "/imgs/portfolio1.png",
-    title: "Telegram bot for automated customer support",
-    description:
-      "Multi-language bot with AI-powered responses and CRM integration",
-    tags: ["grammY", "FastAPI", "PostgreSQL"],
-  },
-  {
-    image: "/imgs/portfolio1.png",
-    title: "Landing page for a Web3 startup",
-    description:
-      "High-conversion landing with wallet connect and NFT gallery",
-    tags: ["React", "Web3", "GSAP", "Motion"],
-  },
-  {
-    image: "/imgs/portfolio1.png",
-    title: "E-commerce platform with payment integration",
-    description:
-      "Full-stack marketplace with Stripe payments, reviews and admin panel",
-    tags: ["NextJS", "Tailwind", "NestJS", "PostgreSQL"],
-  },
+  { image: "/imgs/portfolio/neirobo.png", tags: ["HTML", "CSS", "JavaScript"] },
+  { image: "/imgs/portfolio/maizon.png", tags: ["React", "Scss", "Nginx"] },
+  { image: "/imgs/portfolio/aibnb.png", tags: ["React", "Tailwind", "Gsap", "FastAPI"] },
+  { image: "/imgs/portfolio/jupiter.png", tags: ["HTML", "Css", "JavaScript"] },
+  { image: "/imgs/portfolio/drawing.png", tags: ["NextJS", "Tailwind", "Gsap", "FastAPI"] },
+  { image: "/imgs/portfolio/surgeon.png", tags: ["React", "Tailwind", "Gsap", "Motion"] },
+  { image: "/imgs/portfolio/bnb.png", tags: ["React", "Tailwind", "TypeScript", "FastAPI"] },
+  { image: "/imgs/portfolio/photoshop.png", tags: ["React", "Scss", "FastAPI"] },
+  { image: "/imgs/portfolio/keysec.png", tags: ["React", "Tailwind", "Gsap", "Motion"] },
 ];
 
+const initialIndex = Math.floor(portfolioItems.length / 2);
+
 export default function Portfolio() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const dict = useDictionary();
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
   const current = portfolioItems[activeIndex];
+  const currentText = dict.portfolio.items[activeIndex];
   const sectionRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
@@ -93,10 +72,10 @@ export default function Portfolio() {
           className="flex flex-col items-center text-center"
         >
           <h2 className="text-[24px] sm:text-[30px] md:text-[36px] text-center font-medium leading-[120%] tracking-[-2%]">
-            Прозрачность работ
+            {dict.portfolio.title}
           </h2>
           <p className="text-[14px] sm:text-[16px] md:text-[18px] text-center mt-[10px] md:mt-[15px] font-regular leading-[140%] md:leading-[100%] tracking-0 text-[#6C6C6C]">
-            Вы можете ознакомится с примером моих работ в профиле
+            {dict.portfolio.subtitle}
           </p>
         </div>
 
@@ -130,10 +109,10 @@ export default function Portfolio() {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
                 <h2 className="text-[18px] sm:text-[20px] md:text-[24px] text-center font-medium leading-[120%] md:leading-[100%] tracking-0">
-                  {current.title}
+                  {currentText.title}
                 </h2>
-                <p className="text-[13px] sm:text-[14px] md:text-[16px] font-regular leading-[140%] md:leading-[100%] tracking-[-2%] text-[#6C6C6C] text-center mt-[10px] md:mt-[15px] mb-[20px] md:mb-[30px]">
-                  {current.description}
+                <p className="text-[13px] sm:text-[14px] md:text-[16px] font-regular leading-[140%] md:leading-[100%] tracking-[-2%] text-[#6C6C6C] text-center mt-[10px] md:mt-[15px] mb-[20px] md:mb-[30px] max-w-[500px] mx-auto">
+                  {currentText.description}
                 </p>
 
                 <div className="flex items-center justify-center gap-[6px] md:gap-[10px] flex-wrap">

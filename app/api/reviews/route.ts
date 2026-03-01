@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { writeFileSync, readFileSync, mkdirSync, existsSync } from "fs";
 import { join } from "path";
 import { randomUUID } from "crypto";
+import { verifySessionToken, getSessionCookieName } from "@/lib/admin-auth";
 
 const DATA_PATH = join(process.cwd(), "data", "reviews.json");
 const UPLOAD_DIR = join(process.cwd(), "public", "imgs", "reviews");
@@ -18,6 +20,12 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get(getSessionCookieName())?.value;
+    if (!verifySessionToken(token)) {
+      return NextResponse.json({ error: "Требуется авторизация" }, { status: 401 });
+    }
+
     const formData = await request.formData();
     const name = String(formData.get("name") ?? "").trim();
     const text = String(formData.get("text") ?? "").trim();

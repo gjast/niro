@@ -5,8 +5,10 @@ import Road from "../Road";
 import Image from "next/image";
 import gsap from "gsap";
 import { ANIMATION } from "@/lib/animationConfig";
+import { useDictionary } from "@/i18n/DictionaryProvider";
 
 export default function Step5() {
+  const dict = useDictionary();
   const gridWrapRef = useRef<HTMLDivElement>(null);
   const landingWrapRef = useRef<HTMLDivElement>(null);
   const phoneWrapRef = useRef<HTMLDivElement>(null);
@@ -54,8 +56,8 @@ export default function Step5() {
     <div className="h-full">
       <Road
         number={5}
-        title="Запуск"
-        description="Публикация и успешный старт проекта."
+        title={dict.roadmap.steps[4].title}
+        description={dict.roadmap.steps[4].description}
       >
         <div
           ref={gridWrapRef}

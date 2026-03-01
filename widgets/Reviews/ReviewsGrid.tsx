@@ -6,6 +6,7 @@ import Review from "@/ui/Review";
 import Button from "@/ui/Button";
 import gsap from "gsap";
 import { ANIMATION } from "@/lib/animationConfig";
+import { useDictionary } from "@/i18n/DictionaryProvider";
 
 const SM_BREAKPOINT = 640;
 const MD_BREAKPOINT = 768;
@@ -15,6 +16,7 @@ interface ReviewsGridProps {
 }
 
 export default function ReviewsGrid({ reviews }: ReviewsGridProps) {
+  const dict = useDictionary();
   const [showAll, setShowAll] = useState(false);
   const [columnsCount, setColumnsCount] = useState(3);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -174,7 +176,7 @@ export default function ReviewsGrid({ reviews }: ReviewsGridProps) {
           
 
           <Button>
-            <p className="text-[14px] md:text-[16px] font-medium leading-[100%] tracking-[-2%] px-[20px] py-[14px] md:px-[24px] md:py-[16px]">{showAll ? "Скрыть" : "Показать больше"}</p>
+            <p className="text-[14px] md:text-[16px] font-medium leading-[100%] tracking-[-2%] px-[20px] py-[14px] md:px-[24px] md:py-[16px]">{showAll ? dict.reviews.showLess : dict.reviews.showMore}</p>
           </Button>
         </div>
       </div>

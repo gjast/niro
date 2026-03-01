@@ -1,12 +1,94 @@
 {
   "header": {
     "links": {
-      "hero": "Hero",
+      "main": "Main",
       "portfolio": "Portfolio",
       "roadmap": "Roadmap",
       "reviews": "Reviews",
       "faq": "FAQ"
     },
-    "getStarted": "Get Started"
+    "getStarted": "Order"
+  },
+  "hero": {
+    "title": "We build digital products,",
+    "titleAccent": "that deliver results",
+    "cta": "Order development",
+    "description": "We design and develop modern web interfaces — fast, convenient and tailored to your business needs"
+  },
+  "portfolio": {
+    "title": "Work transparency",
+    "subtitle": "You can see examples of my work in the portfolio",
+    "items": [
+      {
+        "title": "Landing page for Neurobro crypto project",
+        "description": "A landing page for the Neurobro crypto project, used to attract investors and partners."
+      },
+      {
+        "title": "Frontend for Maizon store",
+        "description": "Frontend for the Maizon store, used for selling custom clothing and accessories."
+      },
+      {
+        "title": "Fullstack project for AIbnb crypto project",
+        "description": "A landing page for the AIbnb crypto project with smooth animations to attract investors and partners."
+      },
+      {
+        "title": "Landing page for Jupiter crypto project",
+        "description": "A landing page for the Jupiter crypto project."
+      },
+      {
+        "title": "Fullstack project for souvenir documents store",
+        "description": "Fullstack project for selling souvenir documents, with smooth animations and integration with scripts for souvenir generation."
+      },
+      {
+        "title": "Landing page for Surgeon designer",
+        "description": "A landing page with various animations on appearance and hover."
+      },
+      {
+        "title": "Fullstack project for BNB-Arbitrage crypto project",
+        "description": "Fullstack project for BNB-Arbitrage crypto project with smooth animations and backend logic for fetching exchange data."
+      },
+      {
+        "title": "Full-featured website for Photoshop app download",
+        "description": "A full-featured website for downloading the Photoshop app, with smooth animations and integration with scripts for souvenir generation."
+      },
+      {
+        "title": "Landing page with focus on animations",
+        "description": "A landing page with a strong focus on animations, featuring various animations on appearance and hover."
+      }
+    ]
+  },
+  "stack": {
+    "label": "Our tech stack",
+    "title": "We use modern technologies",
+    "description": "To build fast, scalable sites with high conversion."
+  },
+  "roadmap": {
+    "button": "Roadmap",
+    "title": "How does ordering work?",
+    "subtitle": "Step-by-step development process — from request to finished result.",
+    "steps": [
+      { "title": "Requirements & spec", "description": "We define requirements, fix timelines and payment terms." },
+      { "title": "Prepayment / escrow / hold", "description": "We choose a convenient and secure cooperation format." },
+      { "title": "Development", "description": "We work in stages with full transparency of the process." },
+      { "title": "Handover", "description": "We deliver and make final adjustments." },
+      { "title": "Launch", "description": "Publication and successful project start." }
+    ]
+  },
+  "reviews": {
+    "label": "Reviews",
+    "title": "Honest reviews from clients",
+    "description": "Client feedback on my professional work, quality of services provided and results of our collaboration",
+    "showMore": "Show more",
+    "showLess": "Hide"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Answers to common questions about how we work and our collaboration format.",
+    "items": [
+      { "question": "How does ordering work?", "answer": "We discuss the brief, agree on timeline and price, prepayment, and then start work." },
+      { "question": "How is the work process structured?", "answer": "During development we keep you updated on all stages and give you access to the project for edits and changes." },
+      { "question": "How many hours am I online?", "answer": "On average I'm online about 18 hours a day, from 10:00 to 4:00 MSK." },
+      { "question": "What kind of projects do we take on?", "answer": "We take on projects of any complexity, from landing pages to fullstack applications, with any budget." }
+    ]
   }
 }

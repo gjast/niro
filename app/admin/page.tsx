@@ -12,6 +12,9 @@ type Review = {
 };
 
 export default function AdminReviews() {
+  const [authStatus, setAuthStatus] = useState<"checking" | "unauthenticated" | "authenticated">("checking");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -38,8 +41,51 @@ export default function AdminReviews() {
   };
 
   useEffect(() => {
-    loadReviews();
+    (async () => {
+      try {
+        const res = await fetch("/api/admin/auth");
+        const data = await res.json();
+        setAuthStatus(data.ok ? "authenticated" : "unauthenticated");
+        if (data.ok) loadReviews();
+      } catch {
+        setAuthStatus("unauthenticated");
+      }
+    })();
   }, []);
+
+  useEffect(() => {
+    if (authStatus === "authenticated") loadReviews();
+  }, [authStatus]);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError("");
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: password.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setLoginError(data.error ?? "Ошибка входа");
+        return;
+      }
+      setAuthStatus("authenticated");
+      setPassword("");
+    } catch {
+      setLoginError("Ошибка сети");
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+      setAuthStatus("unauthenticated");
+    } catch {
+      setAuthStatus("unauthenticated");
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,17 +135,74 @@ export default function AdminReviews() {
     }
   };
 
+  if (authStatus === "checking") {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+        <p className="text-(#6C6C6C)">Проверка доступа…</p>
+      </div>
+    );
+  }
+
+  if (authStatus === "unauthenticated") {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+        <div className="MaxContainerWidth mx-auto max-w-sm w-full">
+          <form
+            onSubmit={handleLogin}
+            className="rounded-[22px] border border-(--border-color) bg-white p-6"
+          >
+            <h1 className="text-[22px] font-medium mb-2">Вход в админ-панель</h1>
+            <p className="text-[14px] text-(#6C6C6C) mb-4">Введите пароль для доступа</p>
+            {loginError && (
+              <p className="mb-4 text-red-600 text-[14px]">{loginError}</p>
+            )}
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Пароль"
+              className="w-full rounded-lg border border-(--border-color) px-3 py-2 text-[16px] mb-4"
+              required
+              autoFocus
+            />
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-(--primary-color) px-4 py-2 text-white font-medium"
+            >
+              Войти
+            </button>
+          </form>
+          <Link
+            href="/"
+            className="mt-4 block text-center text-(--primary-color) hover:underline text-[14px]"
+          >
+            ← На главную
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="MaxContainerWidth MaxContainerPadding mx-auto max-w-3xl">
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-[28px] font-medium">Админ-панель: Отзывы</h1>
-          <Link
-            href="/"
-            className="text-(--primary-color) hover:underline"
-          >
-            ← На главную
-          </Link>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="text-[14px] text-(#6C6C6C) hover:text-(--primary-color)"
+            >
+              Выйти
+            </button>
+            <Link
+              href="/"
+              className="text-(--primary-color) hover:underline"
+            >
+              ← На главную
+            </Link>
+          </div>
         </div>
 
         <form

@@ -6,6 +6,7 @@ import StackCart from "@/ui/StackCart";
 import KeyboardTilt from "./KeyboardTilt";
 import gsap from "gsap";
 import { ANIMATION } from "@/lib/animationConfig";
+import { useDictionary } from "@/i18n/DictionaryProvider";
 
 interface StackItem {
   text?: string;
@@ -28,15 +29,16 @@ const stackItems: StackItem[] = [
   { placeholder: true },
   { placeholder: true },
   { text: "web3", description: "Frontend", icon: "/imgs/Stack/web3.png", padding: true },
-  { placeholder: true },
-  { text: "FastAPI", description: "Backend", icon: "/imgs/Stack/fastapi.png" },
+
+{ text: "Nginx", description: "Backend", icon: "/imgs/Stack/nginx.png",}, 
+ { text: "FastAPI", description: "Backend", icon: "/imgs/Stack/fastapi.png" },
   { text: "PostgreSQL", description: "Backend", icon: "/imgs/Stack/postgresql.png", padding: true },
   { text: "NestJS", description: "Backend", icon: "/imgs/Stack/nestjs.svg", padding: true },
   { text: "grammY", description: "Backend", icon: "/imgs/Stack/grammy.svg", padding: true },
-  { placeholder: true },
-];
+  { text: "TypeScript", description: "Backend", icon: "/imgs/Stack/ts.png", },];
 
 export default function Stack() {
+  const dict = useDictionary();
   const containerRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
@@ -86,13 +88,13 @@ export default function Stack() {
     <div ref={containerRef} className="MaxContainerWidth MaxContainerPadding flex flex-col border-l border-r border-(--border-color) mx-auto gap-[30px] md:gap-[50px]">
       <div data-stack="header" className="flex flex-col gap-[10px] md:gap-[15px]">
         <Label>
-          <p className="mx-[18px] my-[9px]">Наш стек технологий</p>
+          <p className="mx-[18px] my-[9px]">{dict.stack.label}</p>
         </Label>
         <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-medium leading-[120%] tracking-[-2%]">
-          Используем современные технологии
+          {dict.stack.title}
         </h2>
         <p className="text-[#6C6C6C] text-[14px] sm:text-[16px] md:text-[18px] font-regular leading-[140%] md:leading-[100%] tracking-0">
-          Чтобы создавать быстрые, масштабируемые сайты с высокой конверсией.
+          {dict.stack.description}
         </p>
       </div>
 

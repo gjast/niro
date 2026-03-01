@@ -1,6 +1,6 @@
 export type Locale = "en" | "ru";
 
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "ru";
 export const supportedLocales: Locale[] = ["en", "ru"];
 
 export function parseLocale(acceptLanguage: string | null): Locale {

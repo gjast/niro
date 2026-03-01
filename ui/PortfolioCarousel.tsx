@@ -23,15 +23,18 @@ export default function PortfolioCarousel({ images, onSlideChange }: PortfolioCa
     return () => mql.removeEventListener("change", update);
   }, []);
 
+  const startIndex = Math.floor(images.length / 2);
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "center",
+    startIndex,
     containScroll: isMobile ? "trimSnaps" : false,
     skipSnaps: false,
     dragFree: false,
   });
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;

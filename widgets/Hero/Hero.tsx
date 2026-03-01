@@ -8,8 +8,10 @@ import Button from "@/ui/Button";
 import arrowLine from "@/assets/arrow.png";
 import gsap from "gsap";
 import { ANIMATION } from "@/lib/animationConfig";
+import { useDictionary } from "@/i18n/DictionaryProvider";
 
 export default function Hero() {
+  const dict = useDictionary();
   const imgRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -80,15 +82,15 @@ export default function Hero() {
           </div>
 
           <h1 className="hero-left-item font-medium text-[28px] sm:text-[36px] md:text-[48px] leading-[120%] tracking-[-2%] text-(--black-color) mt-[20px] mb-[24px] md:mt-[30px] md:mb-[40px]">
-            Создаём цифровые продукты,
+            {dict.hero.title}
             <br />
-            <span className="opacity-60">которые работают на результат</span>
+            <span className="opacity-60">{dict.hero.titleAccent}</span>
           </h1>
 
           <div className="hero-left-item">
             <Button>
               <p className="text-[14px] md:text-[16px] font-medium leading-[100%] tracking-0 px-[20px] py-[14px] md:px-[24px] md:py-[16px]">
-                Заказать разработку
+                {dict.hero.cta}
               </p>
             </Button>
           </div>
@@ -97,8 +99,7 @@ export default function Hero() {
         <div ref={rightRef} data-hero="right" className="flex md:flex-1 flex-col items-start md:items-end justify-center gap-[12px] md:gap-[20px] hero-reveal-right">
           <Image src={arrowLine} alt="hero-2" width={38} height={31} priority className="hidden md:block" />
           <p className="text-[#6C6C6C] text-[15px] md:text-[18px] font-regular leading-[24px] md:leading-[28px] tracking-0 text-left md:text-right text-balance">
-            Проектируем и разрабатываем современные веб-интерфейсы — быстрые,
-            удобные и адаптированные под задачи вашего бизнеса
+            {dict.hero.description}
           </p>
         </div>
       </div>

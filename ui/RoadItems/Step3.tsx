@@ -5,8 +5,10 @@ import Road from "../Road";
 import Image from "next/image";
 import gsap from "gsap";
 import { ANIMATION } from "@/lib/animationConfig";
+import { useDictionary } from "@/i18n/DictionaryProvider";
 
 export default function Step3() {
+  const dict = useDictionary();
   const imgWrapRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
@@ -45,7 +47,7 @@ export default function Step3() {
 
   return (
     <div className="h-full">
-      <Road number={3} title="Разработка" description="Работаем по этапам с полной прозрачностью процесса.">
+      <Road number={3} title={dict.roadmap.steps[2].title} description={dict.roadmap.steps[2].description}>
         <div ref={imgWrapRef} className="absolute top-[30px] right-0">
           <Image src="/imgs/RoadMap/develop.png" alt="develop" width={205} height={228} />
         </div>
