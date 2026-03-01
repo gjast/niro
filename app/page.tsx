@@ -13,7 +13,7 @@ import Footer from "@/widgets/Footer/Footer";
 export default function Home() {
   const reviews = getReviews();
   return (
-    <main>
+    <main className="overflow-hidden">
       <HeaderComponent />
       <FloatingHeader />
       <Hero />
