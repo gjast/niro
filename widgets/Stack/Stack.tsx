@@ -100,7 +100,7 @@ export default function Stack() {
 
       <div className="relative">
         <KeyboardTilt containerRef={containerRef} />
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-[8px] sm:gap-[14px] md:gap-[22px] relative">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-[8px] sm:gap-[14px] md:gap-[22px] items-stretch relative">
           {stackItems.map((item, index) =>
             item.placeholder ? (
               <div key={index} className="hidden xl:block">

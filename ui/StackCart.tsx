@@ -10,27 +10,16 @@ interface StackCartProps {
 export default function StackCart({text, description, icon, padding=false}: StackCartProps) {
 	return (
 		<div
-			className='group bg-(--gray-color) rounded-[14px] sm:rounded-[18px] md:rounded-[22px] p-[6px] sm:p-[8px] md:p-[10px] w-full min-w-0 border border-(--border-color) flex flex-col items-center justify-center max-h-[183px]'
-			style={{
-				// Для кроссбраузерной поддержки: fallback на padding-top
-				aspectRatio: '1 / 1',
-				height: 'auto',
-				position: 'relative',
-			}}
+			className="w-full min-w-0 relative"
+			style={{ paddingTop: '100%' }}
 		>
 			<div
-				aria-hidden
-				style={{
-					width: '100%',
-					paddingTop: '100%',
-					pointerEvents: 'none',
-					position: 'absolute',
-					inset: 0,
-					zIndex: 0,
-					opacity: 0,
-				}}
-			/>
-			<div className='relative bg-white rounded-[10px] sm:rounded-[14px] md:rounded-[18px] aspect-square border border-(--border-color) w-full h-full overflow-hidden'>
+				className="absolute inset-0 group bg-(--gray-color) rounded-[14px] sm:rounded-[18px] md:rounded-[22px] 
+					p-[6px] sm:p-[8px] md:p-[10px] 
+					border border-(--border-color) 
+					flex flex-col items-center justify-center"
+			>
+				<div className='w-full flex-1 min-h-0 bg-white rounded-[10px] sm:rounded-[14px] md:rounded-[18px] border border-(--border-color) overflow-hidden relative'>
 				<div
 					className={`absolute inset-0 flex flex-col items-center justify-center gap-[6px] md:gap-[12px] transition-all duration-200 ease-in ${
 						icon ? 'group-hover:opacity-0 group-hover:translate-y-2' : ''
@@ -50,6 +39,7 @@ export default function StackCart({text, description, icon, padding=false}: Stac
 						/>
 					</div>
 				)}
+				</div>
 			</div>
 		</div>
 	)
