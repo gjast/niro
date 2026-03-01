@@ -9,7 +9,13 @@ interface StackCartProps {
 
 export default function StackCart({text, description, icon, padding=false}: StackCartProps) {
 	return (
-		<div className='group bg-(--gray-color) rounded-[14px] sm:rounded-[18px] md:rounded-[22px] p-[6px] sm:p-[8px] md:p-[10px] aspect-square w-full min-w-0 border border-(--border-color) flex flex-col items-center justify-center'>
+		<div
+			className='group bg-(--gray-color) rounded-[14px] sm:rounded-[18px] md:rounded-[22px] p-[6px] sm:p-[8px] md:p-[10px] aspect-square w-full min-w-0 border border-(--border-color) flex flex-col items-center justify-center'
+			style={{
+				aspectRatio: '1 / 1',
+				height: 'auto',
+			}}
+		>
 			<div className='relative bg-white rounded-[10px] sm:rounded-[14px] md:rounded-[18px] aspect-square border border-(--border-color) w-full h-full overflow-hidden'>
 				<div
 					className={`absolute inset-0 flex flex-col items-center justify-center gap-[6px] md:gap-[12px] transition-all duration-200 ease-in ${
