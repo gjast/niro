@@ -10,7 +10,7 @@ interface StackCartProps {
 export default function StackCart({text, description, icon, padding=false}: StackCartProps) {
 	return (
 		<div
-			className='group bg-(--gray-color) rounded-[14px] sm:rounded-[18px] md:rounded-[22px] p-[6px] sm:p-[8px] md:p-[10px] w-full min-w-0 border border-(--border-color) flex flex-col items-center justify-center'
+			className='group bg-(--gray-color) rounded-[14px] sm:rounded-[18px] md:rounded-[22px] p-[6px] sm:p-[8px] md:p-[10px] w-full min-w-0 border border-(--border-color) flex flex-col items-center justify-center max-h-[183px]'
 			style={{
 				// Для кроссбраузерной поддержки: fallback на padding-top
 				aspectRatio: '1 / 1',
