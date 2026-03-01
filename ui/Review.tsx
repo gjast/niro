@@ -30,7 +30,7 @@ export default function Review({
             className="rounded-full object-cover w-[36px] h-[36px] md:w-[48px] md:h-[48px]"
           />
           <div className="flex flex-col gap-[6px] md:gap-[10px]">
-            <h4 className="text-[14px] md:text-[16px] font-medium leading-[100%] tracking-[-2%]">
+            <h4 className="text-[14px] md:text-[16px] font-semibold leading-[100%] tracking-[-2%]">
               {name}
             </h4>
             <p className="text-[#6C6C6C] text-[12px] md:text-[14px] font-regular leading-[150%] tracking-0">{date}</p>

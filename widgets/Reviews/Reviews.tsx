@@ -44,7 +44,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
           <p className="px-[18px] py-[9px]">{dict.reviews.label}</p>
         </Label>
 
-        <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-medium leading-[120%] tracking-[-2%] mt-[20px] md:mt-[30px] mb-[10px] md:mb-[15px]">
+        <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-semibold leading-[120%] tracking-[-2%] mt-[20px] md:mt-[30px] mb-[10px] md:mb-[15px]">
           {dict.reviews.title}
         </h2>
 

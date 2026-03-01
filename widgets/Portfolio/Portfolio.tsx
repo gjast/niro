@@ -71,7 +71,7 @@ export default function Portfolio() {
           data-portfolio="header"
           className="flex flex-col items-center text-center"
         >
-          <h2 className="text-[24px] sm:text-[30px] md:text-[36px] text-center font-medium leading-[120%] tracking-[-2%]">
+          <h2 className="text-[24px] sm:text-[30px] md:text-[36px] text-center font-semibold leading-[120%] tracking-[-2%]">
             {dict.portfolio.title}
           </h2>
           <p className="text-[14px] sm:text-[16px] md:text-[18px] text-center mt-[10px] md:mt-[15px] font-regular leading-[140%] md:leading-[100%] tracking-0 text-[#6C6C6C]">
@@ -108,7 +108,7 @@ export default function Portfolio() {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <h2 className="text-[18px] sm:text-[20px] md:text-[24px] text-center font-medium leading-[120%] md:leading-[100%] tracking-0">
+                <h2 className="text-[18px] sm:text-[20px] md:text-[24px] text-center font-semibold leading-[120%] md:leading-[100%] tracking-0">
                   {currentText.title}
                 </h2>
                 <p className="text-[13px] sm:text-[14px] md:text-[16px] font-regular leading-[140%] md:leading-[100%] tracking-[-2%] text-[#6C6C6C] text-center mt-[10px] md:mt-[15px] mb-[20px] md:mb-[30px] max-w-[500px] mx-auto">

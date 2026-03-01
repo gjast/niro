@@ -59,7 +59,7 @@ export default function Faq() {
       className="MaxContainerWidth MaxContainerPadding flex flex-col border-l border-r border-(--border-color) mx-auto gap-[24px] md:gap-[40px]"
     >
       <div data-faq="header" className="items-center flex flex-col">
-        <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-medium leading-[120%] tracking-[-2%] text-center max-w-[800px]">
+        <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-semibold leading-[120%] tracking-[-2%] text-center max-w-[800px]">
           {dict.faq.title}
         </h2>
         <p className="text-[#6C6C6C] text-[14px] sm:text-[16px] md:text-[18px] font-regular leading-[140%] md:leading-[100%] tracking-0 text-center mt-[10px] md:mt-[15px]">

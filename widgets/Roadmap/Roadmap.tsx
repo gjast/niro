@@ -57,7 +57,7 @@ export default function Roadmap() {
         <Button>
           <p className="text-[16px] font-medium leading-[100%] tracking-[-2%] px-[18px] py-[9px]">{dict.roadmap.button}</p>
         </Button>
-        <h3 className="text-[24px] sm:text-[36px] text-center font-medium leading-[120%] tracking-[-2%] mt-[30px]">
+        <h3 className="text-[24px] sm:text-[36px] text-center font-semibold leading-[120%] tracking-[-2%] mt-[30px]">
           {dict.roadmap.title}
         </h3>
         <p className="text-[14px] sm:text-[18px] text-center font-regular text-[#6C6C6C] leading-[100%] tracking-0 mt-[15px]">

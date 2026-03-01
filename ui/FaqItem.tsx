@@ -28,7 +28,7 @@ export default function FaqItem({
               open ? "-rotate-90" : "rotate-0"
             }`}
           />
-          <h3 className="text-[15px] sm:text-[17px] md:text-[20px] font-medium leading-[120%] md:leading-[100%] tracking-[-2%] min-w-0 flex-1">
+          <h3 className="text-[15px] sm:text-[17px] md:text-[20px] font-semibold leading-[120%] md:leading-[100%] tracking-[-2%] min-w-0 flex-1">
             {question}
           </h3>
         </div>

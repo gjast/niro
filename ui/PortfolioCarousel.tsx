@@ -78,7 +78,7 @@ export default function PortfolioCarousel({ images, onSlideChange }: PortfolioCa
                     alt={`portfolio ${i + 1}`}
                     width={834}
                     height={469}
-                    className="w-full h-auto rounded-[12px] md:rounded-[18px] object-cover"
+                    className="w-full h-auto rounded-[12px] md:rounded-[18px] object-cover border border-(--border-color)"
                     draggable={false}
                   />
                 </div>

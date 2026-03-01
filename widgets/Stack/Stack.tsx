@@ -90,7 +90,7 @@ export default function Stack() {
         <Label>
           <p className="mx-[18px] my-[9px]">{dict.stack.label}</p>
         </Label>
-        <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-medium leading-[120%] tracking-[-2%]">
+        <h2 className="text-[24px] sm:text-[30px] md:text-[36px] font-semibold leading-[120%] tracking-[-2%]">
           {dict.stack.title}
         </h2>
         <p className="text-[#6C6C6C] text-[14px] sm:text-[16px] md:text-[18px] font-regular leading-[140%] md:leading-[100%] tracking-0">

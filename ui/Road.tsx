@@ -76,7 +76,7 @@ export default function Road({
           data-road-text
           className="flex flex-col gap-[12px] md:ml-[30px] ml-[15px] md:mb-[30px] mb-[15px] z-3"
         >
-          <h4 className="text-[20px] font-medium leading-[100%] tracking-[-2%]">
+          <h4 className="text-[20px] font-semibold leading-[100%] tracking-[-2%]">
             {title}
           </h4>
           <p className="text-[16px] font-regular leading-[150%] tracking-0 text-[#6C6C6C]">
