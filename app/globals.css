@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5F5F5;
+  --black-color: #1C1C1C;
+  --black-color-2: #1A1B1F;
+  --gray-color: #F0F0F0;
+  --border-color: #D9D9D9;
+  --primary-color: #3982EE;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Red Hat Text — основной шрифт по умолчанию */
+  --font-sans: var(--font-red-hat-text), ui-sans-serif, system-ui, sans-serif;
+  /* Inter — используй класс font-inter когда нужен */
+  --font-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.MaxContainerWidth {
+  max-width: 1260px;
+  width: 95%;
+}
+
+.MaxContainerPadding {
+  padding: 30px;
+}
+@media (max-width: 640px) {
+  .MaxContainerPadding {
+    padding: 15px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  * {
+    cursor: none !important;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--black-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Картинки нельзя выделять */
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Скрыть полоску скролла, прокрутка работает */
+html,
+body {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE, Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+/* Hero: начальное состояние до анимации GSAP */
+.hero-reveal-img {
+  opacity: 0;
+  transform: translateY(36px);
+}
+.hero-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.hero-left-item {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.hero-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
 }

@@ -1,0 +1,12 @@
+{
+  "header": {
+    "links": {
+      "hero": "Hero",
+      "portfolio": "Portfolio",
+      "roadmap": "Roadmap",
+      "reviews": "Reviews",
+      "faq": "FAQ"
+    },
+    "getStarted": "Get Started"
+  }
+}
