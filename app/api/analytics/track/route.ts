@@ -27,7 +27,16 @@ async function getCountryFromIp(ip: string): Promise<string> {
 export async function POST(request: NextRequest) {
   try {
     const ip = getClientIp(request);
-    const referrer = request.headers.get("referer") ?? request.headers.get("referrer") ?? "";
+    let referrer = "";
+    try {
+      const body = await request.json();
+      if (body && typeof body.referrer === "string") referrer = body.referrer;
+    } catch {
+      // body пустой или не JSON — берём из заголовка
+    }
+    if (!referrer) {
+      referrer = request.headers.get("referer") ?? request.headers.get("referrer") ?? "";
+    }
     const userAgent = request.headers.get("user-agent") ?? "";
     const country = await getCountryFromIp(ip);
 

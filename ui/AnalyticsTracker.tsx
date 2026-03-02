@@ -8,7 +8,12 @@ export default function AnalyticsTracker() {
 
   useEffect(() => {
     if (pathname?.startsWith("/admin")) return;
-    fetch("/api/analytics/track", { method: "POST" }).catch(() => {});
+    const referrer = typeof document !== "undefined" ? document.referrer || "" : "";
+    fetch("/api/analytics/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ referrer }),
+    }).catch(() => {});
   }, [pathname]);
 
   return null;
