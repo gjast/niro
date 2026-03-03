@@ -5,7 +5,7 @@ const socialLinks = [
   { label: "Telegram", href: "https://t.me/niro_webdev" },
   { label: "Instagram", href: "#" },
   { label: "Facebook", href: "#" },
-  { label: "LinkedIn", href: "#" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/kirill-ponomarev-935b953b4" },
   { label: "Pinterest", href: "#" },
 ];
 
